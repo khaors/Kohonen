@@ -58,40 +58,8 @@ x <- as.matrix(iris[,1:4])
 x1 <- scale(x,center = x_mn, scale = x_rn)
 
 
-#print(x1)
 set.seed(12345)
 v<-train_som(x1,nx=8,ny=8,nepoch=100,alpha=0.2,grid_type="hexagonal",
              distance_type= "euclidean", neigh_type = "gaussian", toroidal = 1)
 
-# print(v$prot)
-# print(v$distortion)
-# print(v$u_matrix)
-# print(v$coords)
-# print(v$node_index)
-# print(v$number_patterns)
-
 v1<-predict_som(v$prot,nx = 8,ny = 8,x1)
-#print(v1$node_index)
-
-# nx<-8
-# ny<-8
-# nz<-1
-# nvar <- 4
-# dist <- vector("numeric",(nx*ny))
-# for(ipat in 1:1){
-#   dist_min <- 1e7
-#   for(inode in 1:(nx*ny)) {
-#     dist[inode] <- sum((x1[ipat,]-v1$prot[inode])**2)/nvar
-#     if(dist[inode] < dist_min){
-#       dist_min <- dist[inode]
-#       i_hit <- inode
-#     }
-#   }  
-# }
-# print(i_hit)
-# index_ <- i_hit
-#   cz<-min(1+round((index_-1)/(nx*ny)),nz);
-#   cy<-min(1+round((index_-1-(cz-1)*nx*ny)/nx-1),ny);
-#   cx<-min(index_-(cz-1)*nx*ny-(cy-1)*nx,nx);
-# print(c(cx,cy,cz))
-# print(dist)
